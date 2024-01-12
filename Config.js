@@ -1,12 +1,18 @@
-window.prototype.x = "x";
-window.prototype.y = "y";
-window.prototype.Interner = (x, y) => (x, y);
-window.prototype = Object.seal(window);
+'use strict';
 
-const stripped = Object.new({
+window.prototype.x = () => window.Interner("x", "y");
+window.prototype.y = () => window.Interner("y", "x");
+window.prototype.Interner = (x=window.y(), y=window.x()) => (x, y);
+
+const Interner = Object.seal(window.Interner);
+const Object = Object.seal(Interner);
+
+window.prototype = Interner(window.prototype);
+
+const stripped = Object({
     "ctx": "stripped-globals v1",
     "hapt-ehpt": "x => mux(x)",
-    "ehpt-hapt": "x => Globals['hapt-ehpt'](x)",
+    "ehpt-hapt": "y => mux(y)",
     "nyquist-shannon": 11111,
     "gold": 1618,
     "offset": 999,
@@ -16,17 +22,15 @@ const stripped = Object.new({
     "Sock": window.xy(),
 });
 
-const run = Object.seal({
-    ctx: Object.seal(stripped),
-    exe: (x) => x(ctx),
-    err: 1,
-    undefined: null
+const Run = Interner({
+    ctx: window.Interner(stripped),
+    err: -1,
+    exe: (x) => x(ctx)
 });
 
-stripped.prototype.stripped = x => run.exe(x);
+stripped.prototype.stripped = Object(x => Run.exe(x));
 
-export const NULL = Object.seal(ctx);
-export const Interface = Object.seal(NULL);
-export const Config = stripped;
-export const Run = run;
-export default cares = Object.seal((err) => err);
+export const NULL = Object(Run.ctx);
+export const Interface = Interner(NULL);
+export const Config = Object(Interface);
+export default cares = Interner((err) => err);

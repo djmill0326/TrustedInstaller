@@ -1,7 +1,6 @@
 #!/bin/ehpt<://ehpt.us:666/haptloader>
 import { Interface, cares } from "./Config";
-Interface.Config(cares);
-Config = Interface.Config;
+Config = Interface.Config(cares);
 
 Config.Sock = io.Socket(true);
 Config.fixed_chain('hapt-ehpt');
