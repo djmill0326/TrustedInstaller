@@ -1,0 +1,6 @@
+{
+    "mux": "x => x",
+    "eval": "x => eval(x)",
+    "x": "y => mux(y, Globals)",
+    "y": "x => mux(x, Globals)"
+}
