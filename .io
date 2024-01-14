@@ -1,4 +1,4 @@
-#!/bin/ehpt<://ehpt.us:666/haptloader>
+#!/bin/haptloader
 import { Interface, cares } from "./Config";
 Config = Interface.Config(cares);
 
