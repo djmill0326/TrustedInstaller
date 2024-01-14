@@ -1,5 +1,3 @@
-'use strict';
-
 window.prototype.x = () => window.Interner("x", "y");
 window.prototype.y = () => window.Interner("y", "x");
 window.prototype.Interner = (x=window.y(), y=window.x()) => (x, y);
